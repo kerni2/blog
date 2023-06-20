@@ -11,17 +11,33 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="prose mx-auto">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <body class="prose mx-auto bg-slate-100">
+    <div class="lg:flex lg:items-center lg:justify-between">
+      <div class="min-w-0 flex-1">
+        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Welcome to Posts</h2>
+      </div>
 
+      <div class="mt-5 flex lg:ml-4 lg:mt-0">
+        <% if user_signed_in? %>
+        <span class="hidden sm:block">
+          <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+            <%= link_to "New Post", new_blog_post_path %>
+          </button>
+        </span>
+    
+        <span class="ml-3 hidden sm:block">
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "inline-flex items-center rounded-md bg-red-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-500" %>
+        </span>
+        <% else %>
+        <span class="sm:ml-3">
+            <%= link_to "Login", new_user_session_path, class: "inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+        </span>
+        <% end %>
+      </div>
+    </div>
     <div>
-      <% if user_signed_in? %>
-        <%= link_to "New Post", new_blog_post_path %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path %>
-      <% end %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     </div>
 
     <%= yield %>
