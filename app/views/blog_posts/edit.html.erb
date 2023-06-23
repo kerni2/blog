@@ -1,5 +1,3 @@
-<%= link_to "Back", root_path %>
-<h1>Edit Post</h1>
+<h2 class="text-base font-semibold leading-7 text-gray-900">Edit Post</h2>
 <%= render partial: "form", locals: {blog_post: @blog_post} %>
-
-<%= button_to "Delete", @blog_post, method: :delete, data: {turbo_confirm: "Are you sure?"} %>
+<%= button_to "Delete", @blog_post, method: :delete, data: {turbo_confirm: "Are you sure?"}, class: "rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" %>
