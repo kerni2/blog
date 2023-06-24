@@ -11,3 +11,8 @@ user.update!(
   password: "111111",
   password_confirmation: "111111"
 )
+
+100.times do |i|
+  blog_post = BlogPost.where(title: "Blog Post #{i}").first_or_initialize
+  blog_post.update(content: "Hello wold #{i}", published_at: Time.current)
+end
